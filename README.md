@@ -1,3 +1,5 @@
+(Forked for compatability with node 7.6 and JSrequire)
+
 # Jest-style diffs on Chai equalities
 
 Chai’s assertions have a built-in `showDiff` flag, but do not produce the diff themselves; it’s up to the test runner to produce such output.
@@ -25,8 +27,11 @@ chai.use(chaiJestDiff())
 
 The plugin factory accepts a boolean argument, `expand`, that mirrors Jest’s `expand` configuration setting, for full-length diffs (instead of close-context diffs).  I couldn’t figure out a way to get this information dynamically from Jest’s exposed API, so you’d have to pass that in manually if you need it.
 
+# Credits
+
 # License
 
-© 2017 Delicious Insights
+Node 7.6 © 2017 Agency Ventures
+Original Code © 2017 Delicious Insights
 
 This plugin is provided under the MIT license.  See [`LICENSE.md`](https://github.com/deliciousinsights/chai-jest-diff/blob/master/LICENSE.md) for details.
