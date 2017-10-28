@@ -1,7 +1,7 @@
 {
-  "name": "chai-jest-diff",
-  "version": "1.0.2",
-  "description": "A plugin to make Chai’s equality assertions (shallow or deep) fail with Jest-like diffs",
+  "name": "chai-subset-jest-diff",
+  "version": "1.0.0",
+  "description": "A plugin to make chaiSubset show diffs in Jest",
   "main": "dist/index.js",
   "scripts": {
     "build": "babel src --out-dir dist --no-comments --ignore '*.spec.js'",
@@ -16,17 +16,11 @@
     "tests",
     "plugin"
   ],
-  "author": "Christophe Porteneuve <christophe@delicious-insights.com> (http://delicious-insights.com/)",
-  "contributors": [
-    {
-      "name": "Chris Jensen",
-      "email": "chris@agency.sc"
-    }
-  ],
+  "author": "Chris Jensen <chris@agency.sc>",
   "license": "MIT",
-  "repository": "https://github.com/raisely/chai-jest-diff",
-  "homepage": "https://github.com/raisely/chai-jest-diff#readme",
-  "bugs": "https://github.com/raisely/chai-jest-diff/issues",
+  "repository": "https://github.com/raisely/chai-subset-jest-diff",
+  "homepage": "https://github.com/raisely/chai-subset-jest-diff#readme",
+  "bugs": "https://github.com/raisely/chai-subset-jest-diff/issues",
   "dependencies": {
     "jest-diff": ">=20.0.3 < 22",
     "jest-matcher-utils": ">= 20.0.3 < 22"
@@ -39,10 +33,12 @@
     "babel-preset-env": "^1.5.2",
     "babel-preset-stage-3": "^6.24.1",
     "chai": "^4.0.2",
+    "chai-subset": "^1",
     "jest": ">=20.0.4 <22",
     "rimraf": "^2.6.1"
   },
   "peerDependencies": {
+    "chai-subset": "^1",
     "chai": "^4.0.2",
     "jest": ">= 20.0.4 < 22"
   },
