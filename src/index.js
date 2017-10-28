@@ -1,31 +1,28 @@
 const diff = require('jest-diff')
 const { matcherHint, printExpected, printReceived } = require('jest-matcher-utils');
 
-function chaiJestDiff (expand = false) {
-  return (_chai, { flag, eql }) => {
-    const Assertion = _chai.Assertion
+function chaiSubsetJestDiff (expand = false) {
+  return (chai, { flag }) => {
+    const Assertion = chai.Assertion;
+    Assertion.overwriteMethod('containSubset', function (_super) {
+      return function containSubset (expected) {
+        let pass = true;
 
-    const assertEqual = createAssertion({
-      deepPassAssert: 'eql',
-      expand,
-      flag,
-      kind: 'equal',
-      name: 'assertEqual',
-      passFx: (a, b) => a === b
-    })
-    Assertion.addMethod('equal', assertEqual)
-    Assertion.addMethod('equals', assertEqual)
-    Assertion.addMethod('eq', assertEqual)
+        try {
+          _super.apply(this, arguments);
+        } catch(e) {
+          pass = false;
+        }
 
-    const assertEql = createAssertion({
-      expand,
-      flag,
-      kind: 'deep equal',
-      name: 'assertEql',
-      passFx: eql
-    })
-    Assertion.addMethod('eql', assertEql)
-    Assertion.addMethod('eqls', assertEql)
+        const received = flag(this, 'object')
+        const kind = 'containSubset';
+        const message = pass
+          ? buildMessage({ expected, received, hintParam: `.not.to.${kind}`, introSuffix: `not to ${kind}`, expand })
+          : buildMessage({ expected, received, hintParam: `.to.${kind}`, introSuffix: `to ${kind}`, showDiff: true, expand })
+
+        this.assert(pass, message, message, expected, received, false)
+      };
+    });
   }
 }
 
@@ -41,28 +38,4 @@ function buildMessage ({ expected, received, hintParam, introSuffix, showDiff, e
     (diffString ? `\n\nDifference:\n\n${diffString}` : '')
 }
 
-function createAssertion({ deepPassAssert, expand, flag, kind, name, passFx }) {
-  const result = function syntheticAssert (expected, msg) {
-    if (msg) {
-      flag(this, 'message', msg)
-    }
-    if (deepPassAssert && flag(this, 'deep')) {
-      return this[deepPassAssert](expected)
-    }
-
-    const received = flag(this, 'object')
-    const pass = passFx(received, expected)
-    const hintSegment = kind.replace(/\s+/, '.')
-    const message = pass
-      ? buildMessage({ expected, received, hintParam: `.not.to.${hintSegment}`, introSuffix: `not to ${kind}`, expand })
-      : buildMessage({ expected, received, hintParam: `.to.${hintSegment}`, introSuffix: `to ${kind}`, showDiff: true, expand })
-
-    this.assert(pass, message, message, expected, received, false)
-  }
-
-  result.displayName = name
-
-  return result
-}
-
-module.exports = chaiJestDiff;
+module.exports = chaiSubsetJestDiff;
