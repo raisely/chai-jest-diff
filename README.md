@@ -1,4 +1,4 @@
-(Forked for compatability with node 7.6 and JSrequire)
+(Forked for compatability Jest 21)
 
 # Jest-style diffs on Chai equalities
 

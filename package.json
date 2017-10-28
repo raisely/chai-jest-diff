@@ -1,6 +1,6 @@
 {
   "name": "chai-jest-diff",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A plugin to make Chai’s equality assertions (shallow or deep) fail with Jest-like diffs",
   "main": "dist/index.js",
   "scripts": {
@@ -17,10 +17,16 @@
     "plugin"
   ],
   "author": "Christophe Porteneuve <christophe@delicious-insights.com> (http://delicious-insights.com/)",
+  "contributors": [
+    {
+      "name": "Chris Jensen",
+      "email": "chris@agency.sc"
+    }
+  ],
   "license": "MIT",
-  "repository": "https://github.com/deliciousinsights/chai-jest-diff",
-  "homepage": "https://github.com/deliciousinsights/chai-jest-diff#readme",
-  "bugs": "https://github.com/deliciousinsights/chai-jest-diff/issues",
+  "repository": "https://github.com/raisely/chai-jest-diff",
+  "homepage": "https://github.com/raisely/chai-jest-diff#readme",
+  "bugs": "https://github.com/raisely/chai-jest-diff/issues",
   "dependencies": {
     "jest-diff": ">=20.0.3 < 22",
     "jest-matcher-utils": ">= 20.0.3 < 22"
