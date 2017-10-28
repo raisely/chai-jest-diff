@@ -1,11 +1,7 @@
-import diff from 'jest-diff'
-import {
-  matcherHint,
-  printExpected,
-  printReceived
-} from 'jest-matcher-utils'
+const diff = require('jest-diff')
+const { matcherHint, printExpected, printReceived } = require('jest-matcher-utils');
 
-export default function chaiJestDiff (expand = false) {
+function chaiJestDiff (expand = false) {
   return (_chai, { flag, eql }) => {
     const Assertion = _chai.Assertion
 
@@ -68,3 +64,5 @@ function createAssertion({ deepPassAssert, expand, flag, kind, name, passFx }) {
 
   return result
 }
+
+module.exports = chaiJestDiff;

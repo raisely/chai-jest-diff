@@ -1,5 +1,7 @@
-import chai, { expect } from 'chai'
-import chaiJestDiff from './index'
+const chai = require('chai');
+const chaiJestDiff = require('./index');
+
+const expect = chai.expect;
 
 chai.use(chaiJestDiff())
 
