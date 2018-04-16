@@ -25,7 +25,17 @@ chai.use(chaiJestDiff());
 
 The plugin factory accepts a boolean argument, `expand`, that mirrors Jest’s `expand` configuration setting, for full-length diffs (instead of close-context diffs).
 
-# Credits
+# Contributing
+
+Contributions are welcome. Please submit a pull request and include tests.
+
+Please follow the coding style in `.editorconfig`
+
+Contributions should pass `npm test`
+
+## Testing
+
+Run `npm test`
 
 # License
 
