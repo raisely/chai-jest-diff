@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/raisely/chai-subset-jest-diff.svg?branch=master)](https://travis-ci.org/raisely/chai-subset-jest-diff)
+
 # Jest-style diffs on Chai equalities
 
 (Based upon [chai-jest-diff](https://github.com/deliciousinsights/chai-jest-diff))
